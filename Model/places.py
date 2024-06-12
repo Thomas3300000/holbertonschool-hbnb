@@ -1,8 +1,10 @@
-#!/usr/bin/python3
 import uuid
 from datetime import datetime
 from user import User
 from city import City
+from country import Country
+from amenities import Amenity
+from review import Review
 """ A class named Place that defines a place. """
 
 
@@ -43,20 +45,50 @@ class Place:
         self.created_at = datetime.now()
         self.update_at = datetime.now()
 
-        #host.add_place(self)
+        host.add_place(self)
 
     """ A method that adds new amenities. """
     @add_amenity.setter
     def add_amenity(self, amenity):
-        """ A method that adds new amenities. """
+        """ Adds a new amenity if not in the list. """
         if amenity not in self.amenities:
             self.amenities.append(amenity)
+
+    """ A method that returns the list of amenities. """
+    @property
+    def list_amenities(self):
+        """ Returns the list of amenities. """
+        return self.amenities
+
+    """ A method that gets the amenities. """
+    @property
+    def get_amenity(self, amenity_id):
+        """ Gets a amenity if it has an id. """
+        for amenity in self.amenities:
+            if amenity.amenity_id == amenity_id:
+                return amenity
+        return None
 
     """ A method that adds new reviews. """
     @add_review.setter
     def add_review(self, review):
-        """ A method that adds new reviews. """
+        """ Adds a new review. """
         self.reviews.append(review)
+
+    """ A method that returns the list of reviews. """
+    @property
+    def list_reviews(self):
+        """ Returns the list of reviews. """
+        return self.reviews
+
+    """ A method that gets the reviews. """
+    @property
+    def get_review(self, review_id):
+        """ Gets a review if it has an id. """
+        for review in self.reviews:
+            if review.review_id == review_id:
+                return review
+        return None
 
     """ A method that displays a comprehensive message for the user. """
     def __str__(self):
