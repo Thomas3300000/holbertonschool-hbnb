@@ -1,4 +1,4 @@
-import uuid
+from uuid import uuid4
 from datetime import datetime
 from user import User
 from city import City
@@ -47,18 +47,101 @@ class Place:
 
         host.add_place(self)
 
-    """ A method that adds new amenities. """
-    @add_amenity.setter
-    def add_amenity(self, amenity):
-        """ Adds a new amenity if not in the list. """
-        if amenity not in self.amenities:
-            self.amenities.append(amenity)
-
-    """ A method that returns the list of amenities. """
     @property
-    def list_amenities(self):
-        """ Returns the list of amenities. """
-        return self.amenities
+    def place_id(self):
+        return self.place_id
+    
+    @place_id.setter
+    def place_id(self, value):
+        self.place_id = value
+
+    @property
+    def name(self):
+        return self.name
+    
+    @name.setter
+    def name(self, value):
+        self.name = value
+
+    @property
+    def description(self):
+        return self.description
+    
+    @description.setter
+    def description(self, value):
+        self.description = value
+
+    @property
+    def address(self):
+        return self.address
+    
+    @address.setter
+    def address(self, value):
+        self.address = value
+
+    @property
+    def city(self):
+        return self.city
+    
+    @city.setter
+    def city(self, value):
+        self.city = value
+
+    @property
+    def lattitude(self):
+        return self.lattitude
+    
+    @lattitude.setter
+    def lattitude(self, value):
+        self.lattitude = value
+
+    @property
+    def longitude(self):
+        return self.longitude
+    
+    @longitude.setter
+    def longitude(self, value):
+        self.longitude = value
+
+    @property
+    def host(self):
+        return self.host
+    
+    @host.setter
+    def host(self, value):
+        self.host = value
+    
+    @property
+    def num_rooms(self, value):
+        self.num_rooms = value
+
+    @num_rooms.setter
+    def num_rooms(self, value):
+        self.num_rooms = value
+
+    @property
+    def num_bathrooms(self):
+        return self.num_bathrooms
+    
+    @num_bathrooms.setter
+    def num_bathrooms(self, value):
+        self.num_bathrooms = value
+
+    @property
+    def price_per_night(self):
+        return self.price_per_night
+    
+    @price_per_night.setter
+    def price_per_night(self, value):
+        self.price_per_night = value
+
+    @property
+    def max_guests(self):
+        return self.max_guests
+    
+    @host.setter
+    def max_guests(self, value):
+        self.max_guests = value
 
     """ A method that gets the amenities. """
     @property
@@ -68,6 +151,19 @@ class Place:
             if amenity.amenity_id == amenity_id:
                 return amenity
         return None
+
+    """ A method that returns the list of amenities. """
+    @property
+    def list_amenities(self):
+        """ Returns the list of amenities. """
+        return self.amenities
+
+    """ A method that adds new amenities. """
+    @add_amenity.setter
+    def add_amenity(self, amenity):
+        """ Adds a new amenity if not in the list. """
+        if amenity not in self.amenities:
+            self.amenities.append(amenity)
 
     """ A method that adds new reviews. """
     @add_review.setter
