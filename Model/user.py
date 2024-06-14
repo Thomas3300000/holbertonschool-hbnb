@@ -1,6 +1,4 @@
 from datetime import datetime
-from review import Review
-from places import Places
 from uuid import uuid4
 
 
@@ -30,23 +28,25 @@ class User:
     def check_password(self, password):
         return self.password == password
 
-    def add_review(self, review: Review):
-        if review in self.reviews:
+    def add_review(self, review):
+        if review not in self.reviews:
             self.reviews.append(review)
             self.updated_at = datetime.now()
 
     def remove_review(self, review):
-        self.reviews.remove(review)
-        self.updated_at = datetime.now()
+        if review in self.reviews:
+            self.reviews.remove(review)
+            self.updated_at = datetime.now()
 
     def add_place(self, place):
-        if place in self.places:
+        if place not in self.places:
             self.places.append(place)
             self.updated_at = datetime.now()
 
     def remove_place(self, places):
-        self.places.remove(places)
-        self.updated_at = datetime.now()
+        if places in self.places:
+            self.places.remove(places)
+            self.updated_at = datetime.now()
 
     def update(self, **kwargs):
         for key, value in kwargs.items():

@@ -1,8 +1,7 @@
 from uuid import uuid4
 from datetime import datetime
-from user import User
-from places import Place
-
+from Model.user import User
+from Model.places import Place
 
 class Review:
     review = []
@@ -59,6 +58,8 @@ class Review:
 
     @created_at.setter
     def created_at(self, value):
+        if not isinstance(value, datetime):
+            raise TypeError("created_at must be a datetime")
         self._created_at = value
 
     @property
@@ -67,6 +68,8 @@ class Review:
 
     @updated_at.setter
     def updated_at(self, value):
+        if not isinstance(value, datetime):
+            raise TypeError("updated_at must be a datetime")
         self._updated_at = value
 
     def update(self, **kwargs):
