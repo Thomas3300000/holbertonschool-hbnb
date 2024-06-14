@@ -1,7 +1,8 @@
 import unittest
-import uuid
-from datetime import datetime
-from app import app, City # type: ignore
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from Model.City import City
 
 class TestCityEndpoints(unittest.TestCase):
 

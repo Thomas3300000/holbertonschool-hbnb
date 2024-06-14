@@ -5,7 +5,7 @@ from datetime import datetime  # Importing datetime for timestamps
 class City:
     _cities = []  # Class variable to store all city instances
 
-    def __init__(self, name: str):
+    def __init__(self, name: str, Country):
         """Initializes a new City instance
         :param name: The name of the city
         :raises ValueError: If the city already exists"""
@@ -15,6 +15,7 @@ class City:
         else:
             self.city_id = uuid.uuid4()  # Generate unique city ID
             self.name = name  # Set city name
+            self.country = Country # Set country
             self.created_at = datetime.now()  # Set creation timestamp
             self.updated_at = datetime.now()  # Set updated timestamp
             self.add_city()  # Add city to the list
