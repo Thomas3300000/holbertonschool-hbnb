@@ -2,6 +2,7 @@ import json
 import os
 from Persistence.IPersistenceManager import IPersistenceManager
 
+
 class DataManager(IPersistenceManager):
     def __init__(self, storage_path="data_store.json"):
         self.storage_path = storage_path
@@ -31,11 +32,17 @@ class DataManager(IPersistenceManager):
     def update(self, entity):
         entity_type = type(entity).__name__
         entity_id = entity.get('id')
-        if entity_type in self.data_store and entity_id in self.data_store[entity_type]:
+        if {
+            entity_type in self.data_store and entity_id in
+            self.data_store[entity_type]
+        }:
             self.data_store[entity_type][entity_id] = entity
             self._save_data()
 
     def delete(self, entity_id, entity_type):
-        if entity_type in self.data_store and entity_id in self.data_store[entity_type]:
+        if {
+            entity_type in self.data_store and entity_id in
+            self.data_store[entity_type]
+        }:
             del self.data_store[entity_type][entity_id]
             self._save_data()
