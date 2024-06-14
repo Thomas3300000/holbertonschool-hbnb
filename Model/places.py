@@ -1,147 +1,118 @@
 from uuid import uuid4
 from datetime import datetime
-from user import User
-from city import City
-from country import Country
-from amenities import Amenity
-from review import Review
+from Model.user import User
+from Model.city import City
+from Model.country import Country
+from Model.amenities import Amenity
+from Model.review import Review
 """ A class named Place that defines a place. """
 
-
 class Place:
-    """ Initilizes a new place. """
     def __init__(self, place_id, name, description, address, city, latitude, longitude, host, num_rooms, num_bathrooms, price_per_night, max_guests):
-        """
-        Initializes a new place.
-
-        Args:
-            place_id (uuid4) : The identifier of the place.
-            name (str): The name of the place.
-            description (str): The description of the place.
-            address (str): The adress of the place.
-            city (City): The city where is the place.
-            latitude (float): The latitude of the place.
-            longitude (float): The longitude of the place.
-            host (User): The user who hosts the place.
-            num_rooms (int): The number of rooms.
-            num_bathrooms (int): The number of bathrooms.
-            price_per_night (float): The price per night.
-            max_guests (int): The maximum number of people who can live in.
-        """
-        self.place_id = uuid.uuid4()
-        self.name = name
-        self.description = description
-        self.address = address
-        self.city = city
-        self.latitude = latitude
-        self.longitude = longitude
-        self.host = host
-        self.num_rooms = num_rooms
-        self.num_bathrooms = num_bathrooms
-        self.price_per_night = price_per_night
-        self.max_guests = max_guests
+        self.place_id = place_id
+        self._name = name
+        self._description = description
+        self._address = address
+        self._city = city
+        self._latitude = latitude
+        self._longitude = longitude
+        self._host = host
+        self._num_rooms = num_rooms
+        self._num_bathrooms = num_bathrooms
+        self._price_per_night = price_per_night
+        self._max_guests = max_guests
         self.amenities = []
         self.reviews = []
         self.created_at = datetime.now()
-        self.update_at = datetime.now()
-
-        host.add_place(self)
-
-    @property
-    def place_id(self):
-        return self.place_id
-    
-    @place_id.setter
-    def place_id(self, value):
-        self.place_id = value
+        self.updated_at = datetime.now()
 
     @property
     def name(self):
-        return self.name
+        return self._name
     
     @name.setter
     def name(self, value):
-        self.name = value
+        self._name = value
 
     @property
     def description(self):
-        return self.description
+        return self._description
     
     @description.setter
     def description(self, value):
-        self.description = value
+        self._description = value
 
     @property
     def address(self):
-        return self.address
+        return self._address
     
     @address.setter
     def address(self, value):
-        self.address = value
+        self._address = value
 
     @property
     def city(self):
-        return self.city
+        return self._city
     
     @city.setter
     def city(self, value):
-        self.city = value
+        self._city = value
 
     @property
-    def lattitude(self):
-        return self.lattitude
+    def latitude(self):
+        return self._latitude
     
-    @lattitude.setter
-    def lattitude(self, value):
-        self.lattitude = value
+    @latitude.setter
+    def latitude(self, value):
+        self._latitude = value
 
     @property
     def longitude(self):
-        return self.longitude
+        return self._longitude
     
     @longitude.setter
     def longitude(self, value):
-        self.longitude = value
+        self._longitude = value
 
     @property
     def host(self):
-        return self.host
+        return self._host
     
     @host.setter
     def host(self, value):
-        self.host = value
+        self._host = value
     
     @property
-    def num_rooms(self, value):
-        self.num_rooms = value
-
+    def num_rooms(self):
+        return self._num_rooms
+    
     @num_rooms.setter
     def num_rooms(self, value):
-        self.num_rooms = value
+        self._num_rooms = value
 
     @property
     def num_bathrooms(self):
-        return self.num_bathrooms
+        return self._num_bathrooms
     
     @num_bathrooms.setter
     def num_bathrooms(self, value):
-        self.num_bathrooms = value
+        self._num_bathrooms = value
 
     @property
     def price_per_night(self):
-        return self.price_per_night
+        return self._price_per_night
     
     @price_per_night.setter
     def price_per_night(self, value):
-        self.price_per_night = value
+        self._price_per_night = value
 
     @property
     def max_guests(self):
-        return self.max_guests
+        return self._max_guests
     
-    @host.setter
+    @max_guests.setter
     def max_guests(self, value):
-        self.max_guests = value
+        self._max_guests = value
 
     """ A method that gets the amenities. """
     @property
@@ -159,14 +130,14 @@ class Place:
         return self.amenities
 
     """ A method that adds new amenities. """
-    @add_amenity.setter
+
     def add_amenity(self, amenity):
         """ Adds a new amenity if not in the list. """
         if amenity not in self.amenities:
             self.amenities.append(amenity)
 
     """ A method that adds new reviews. """
-    @add_review.setter
+
     def add_review(self, review):
         """ Adds a new review. """
         self.reviews.append(review)
