@@ -1,10 +1,7 @@
 from uuid import uuid4
 from datetime import datetime
-from Model.user import User
-from Model.city import City
-from Model.country import Country
-from Model.amenities import Amenity
-from Model.review import Review
+
+
 """ A class named Place that defines a place. """
 
 
@@ -122,7 +119,7 @@ class Place:
     def get_amenity(self, amenity_id):
         """ Gets a amenity if it has an id. """
         for amenity in self.amenities:
-            if amenity.amenity_id == amenity_id:
+            if amenity == amenity_id:
                 return amenity
         return None
 
@@ -133,11 +130,15 @@ class Place:
         return self.amenities
 
     """ A method that adds new amenities. """
-
     def add_amenity(self, amenity):
         """ Adds a new amenity if not in the list. """
         if amenity not in self.amenities:
             self.amenities.append(amenity)
+
+    def remove_amenity(self, amenity):
+        """ Removes an amenity if it presents in the list. """
+        if amenity in self.amenities:
+            self.amenities.remove(amenity)
 
     """ A method that adds new reviews. """
 
@@ -156,7 +157,7 @@ class Place:
     def get_review(self, review_id):
         """ Gets a review if it has an id. """
         for review in self.reviews:
-            if review.review_id == review_id:
+            if review == review_id:
                 return review
         return None
 
@@ -164,4 +165,4 @@ class Place:
     def __str__(self):
         """ Returns the name of the place and the city. """
 
-        return f"{self.name} in {self.city.name}, {self.city.country.name}"
+        return f"{self._name} in {self._city}"
