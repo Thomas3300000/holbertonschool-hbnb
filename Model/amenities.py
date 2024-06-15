@@ -1,6 +1,7 @@
 from uuid import uuid4
 from datetime import datetime
 
+
 class Amenity:
     def __init__(self, name):
         self.amenity_id = uuid4()
@@ -11,7 +12,8 @@ class Amenity:
     @property
     def amenity_id(self):
         return self._amenity_id
-    
+
+
     @amenity_id.setter
     def amenity_id(self, value):
         self._amenity_id = value
@@ -19,7 +21,7 @@ class Amenity:
     @property
     def name(self):
         return self._name
-    
+
     @name.setter
     def name(self, value):
         self._name = value

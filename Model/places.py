@@ -7,8 +7,11 @@ from Model.amenities import Amenity
 from Model.review import Review
 """ A class named Place that defines a place. """
 
+
 class Place:
-    def __init__(self, place_id, name, description, address, city, latitude, longitude, host, num_rooms, num_bathrooms, price_per_night, max_guests):
+    def __init__(self, place_id, name, description, address, city, latitude,
+                 longitude, host, num_rooms, num_bathrooms, price_per_night,
+                 max_guests):
         self.place_id = place_id
         self._name = name
         self._description = description
@@ -29,7 +32,7 @@ class Place:
     @property
     def name(self):
         return self._name
-    
+
     @name.setter
     def name(self, value):
         self._name = value
@@ -37,7 +40,7 @@ class Place:
     @property
     def description(self):
         return self._description
-    
+
     @description.setter
     def description(self, value):
         self._description = value
@@ -45,7 +48,7 @@ class Place:
     @property
     def address(self):
         return self._address
-    
+
     @address.setter
     def address(self, value):
         self._address = value
@@ -53,7 +56,7 @@ class Place:
     @property
     def city(self):
         return self._city
-    
+
     @city.setter
     def city(self, value):
         self._city = value
@@ -61,7 +64,7 @@ class Place:
     @property
     def latitude(self):
         return self._latitude
-    
+
     @latitude.setter
     def latitude(self, value):
         self._latitude = value
@@ -69,7 +72,7 @@ class Place:
     @property
     def longitude(self):
         return self._longitude
-    
+
     @longitude.setter
     def longitude(self, value):
         self._longitude = value
@@ -77,15 +80,15 @@ class Place:
     @property
     def host(self):
         return self._host
-    
+
     @host.setter
     def host(self, value):
         self._host = value
-    
+
     @property
     def num_rooms(self):
         return self._num_rooms
-    
+
     @num_rooms.setter
     def num_rooms(self, value):
         self._num_rooms = value
@@ -93,7 +96,7 @@ class Place:
     @property
     def num_bathrooms(self):
         return self._num_bathrooms
-    
+
     @num_bathrooms.setter
     def num_bathrooms(self, value):
         self._num_bathrooms = value
@@ -101,7 +104,7 @@ class Place:
     @property
     def price_per_night(self):
         return self._price_per_night
-    
+
     @price_per_night.setter
     def price_per_night(self, value):
         self._price_per_night = value
@@ -109,7 +112,7 @@ class Place:
     @property
     def max_guests(self):
         return self._max_guests
-    
+
     @max_guests.setter
     def max_guests(self, value):
         self._max_guests = value
@@ -160,4 +163,5 @@ class Place:
     """ A method that displays a comprehensive message for the user. """
     def __str__(self):
         """ Returns the name of the place and the city. """
+
         return f"{self.name} in {self.city.name}, {self.city.country.name}"
