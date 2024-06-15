@@ -1,6 +1,8 @@
 from uuid import uuid4
 from datetime import datetime
 
+""" A class named Amenity that defines an amenity. """
+
 
 class Amenity:
     def __init__(self, name):
