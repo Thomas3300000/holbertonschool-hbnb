@@ -78,5 +78,6 @@ class TestUser(unittest.TestCase):
         self.assertNotIn(self.user, User.users)
         self.assertNotIn(self.user.email, User._registered_emails)
 
+
 if __name__ == '__main__':
     unittest.main()

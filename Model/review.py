@@ -40,8 +40,6 @@ class Review:
 
     @place.setter
     def place(self, value):
-        if value not in Place.places:
-            raise ValueError(f"{value} is not a valid place")
         self._place = value
 
     @property

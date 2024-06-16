@@ -4,6 +4,7 @@ from Model.user import User
 from Model.city import City
 from Model.country import Country
 from Model.amenities import Amenity
+from Model.review import Review
 """ A class named Place that defines a place. """
 
 class Place:

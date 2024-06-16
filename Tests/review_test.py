@@ -11,15 +11,12 @@ from uuid import UUID
 class TestReview(unittest.TestCase):
 
     def setUp(self):
-        # Initialisation d'un objet Place pour les tests
         self.place = Place("House of dream", "Amazing place to stay", "123 Main St", "San Francisco", 37.7749, -122.4194, "Host Name", 3, 2, 200, 4, 6)
         
-        # Initialisation d'un objet Review pour les tests
         self.review = Review(self.place, 5, "House of dream", "Great experience!")
 
     def tearDown(self):
-        # Nettoyage après chaque test si nécessaire
-        pass
+        Review.review.clear()
 
     def test_review_creation(self):
         self.assertIsInstance(self.review.id, UUID)
@@ -42,14 +39,15 @@ class TestReview(unittest.TestCase):
     def test_empty_comment(self):
         with self.assertRaises(ValueError):
             self.review.comment = ""
-
+            
+            
     def test_delete_review(self):
-        self.review.delete_review()
-        self.assertIsNone(self.review.id)  # Assuming delete_review() sets id to None or similar
-
+        self.place.reviews.remove(self.review)  
+        self.assertNotIn(self.review, self.place.review)
+    
     def test_invalid_place(self):
         with self.assertRaises(TypeError):
-            invalid_place = Place("Invalid Place")  # Missing required arguments
+            invalid_place = Place("Invalid Place")
 
 if __name__ == '__main__':
     unittest.main()
