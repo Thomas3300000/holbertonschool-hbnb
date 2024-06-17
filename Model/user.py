@@ -59,6 +59,18 @@ class User:
                 setattr(self, key, value)
         self.updated_at = datetime.now()
 
+    def to_dict(self):
+        return {
+            'id': str(self.id),
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'email': self.email,
+            'created_at': self.created_at.isoformat(),
+            'updated_at': self.updated_at.isoformat(),
+            'reviews': self.reviews,
+            'places': self.places
+            }
+
     @staticmethod
     def get_by_id(user_id):
         for user in User.users:
